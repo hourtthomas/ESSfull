@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rapport {{ rapport.titre }}{% endblock %}
+
+{% block body %}
+    <h1 > {{ rapport.titre }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Date de création du rapport</th>
+                <td>{{ rapport.createdAt ? rapport.createdAt|date('Y-m-d H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ rapport.auteur.name }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ rapport.auteur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Batiment</th>
+                <td>{{ rapport.batiment.denomination }}</td>
+            </tr>
+            <tr>
+                <th>Etage</th>
+                <td>{{ rapport.etage.denomination }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ rapport.localisation.denomination }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ rapport.titre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ rapport.contenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('rapport_index') }}">Retourner à l'index des rapports</a><br>
+
+
+{% if app.user.roles[0]== 'ROLE_ADMIN' %}
+    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}">Modifier le rapport</a>
+{% endif %}
+
+{% if app.user.roles[0]== 'ROLE_ADMIN' %}
+    {{ include('rapport/_delete_form.html.twig') }}
+{% endif %}
+
+<section id="commentaires">
+    {% for commentaire in rapport.commentaires %}
+        <div class="comment">
+            <div class="row">
+                <div class="col-3">
+                    {{commentaire.auteur}} (<small>{{ commentaire.createdAt | date('d/m/Y à H:i')}}</small>)
+                </div>
+                <div class="col-9">
+                    {{ commentaire.contenu | raw}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
+    {{form_start(commentForm)}}
+
+    {{form_row(commentForm.titre, {'attr':{'placeholder': "Titre de votre commentaire"}})}}
+    {{form_row(commentForm.contenu, {'attr':{'placeholder': "Votre commentaire"}})}}
+    <button type="submit" class="btn btn-success"> Enregister votre commentaire</button>
+
+    {{form_end(commentForm)}}
+
+
+{% endblock %}

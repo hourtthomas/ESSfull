@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h1>Bienvenue sur votre profil {{user.name}}</h1>
+    <a href="{{ path('password_modify') }}">Modifier le mot de passe</a>
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    
+{% endblock %}

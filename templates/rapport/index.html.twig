@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listing des rapports{% endblock %}
+
+{% block body %}
+    <h1 >Listing des rapports</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Titre du rapport</th>
+                <th>Auteur</th>
+                <th>Batiment</th>
+                <th>Etage</th>
+                <th>Localisation</th>
+                <th>Contenu</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rapport in rapports %}
+            <tr>
+                <td>{{ rapport.createdAt ? rapport.createdAt|date('Y-m-d H:i') : '' }}</td>
+                <td>{{ rapport.titre }}</td>
+                <td>{{ rapport.auteur.name }} {{ rapport.auteur.prenom }}</td>
+                <td>{{ rapport.batiment.denomination }}</td>
+                <td>{{ rapport.etage.denomination }}</td>
+                <td>{{ rapport.localisation.denomination }}</td>
+                <td>{{ rapport.contenu }}</td>
+                <td>
+                    <a href="{{ path('rapport_show', {'id': rapport.id}) }}">Voir / Commenter</a>
+                    {% if app.user.roles[0]== 'ROLE_ADMIN' %}
+                    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}">Editer le rapport</a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+            
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun rapport enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
