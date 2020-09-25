@@ -76,7 +76,7 @@ class RapportController extends AbstractController
             $entityManager->persist($commentaire);
             $entityManager->flush();
 
-            return $this->redirectToRoute('rapport_index');
+            return $this->redirectToRoute('rapport_show');
         
         }
         

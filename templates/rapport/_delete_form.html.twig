@@ -1,5 +1,5 @@
 <form method="post" action="{{ path('rapport_delete', {'id': rapport.id}) }}" onsubmit="return confirm('Effacer le rapport');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ rapport.id) }}">
-    <button class="btn">Effacer ce rapport</button>
+    <button class="btn btn-form texte-blanc w-75" >Effacer ce rapport</button>
 </form>

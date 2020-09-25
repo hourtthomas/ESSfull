@@ -1,48 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Listing des rapports{% endblock %}
+{% block title %}Listing des rapports
+{% endblock %}
 
 {% block body %}
-    <h1 >Listing des rapports</h1>
+	<h1 class="text-center mb-5">Listing des rapports</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Titre du rapport</th>
-                <th>Auteur</th>
-                <th>Batiment</th>
-                <th>Etage</th>
-                <th>Localisation</th>
-                <th>Contenu</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for rapport in rapports %}
-            <tr>
-                <td>{{ rapport.createdAt ? rapport.createdAt|date('Y-m-d H:i') : '' }}</td>
-                <td>{{ rapport.titre }}</td>
-                <td>{{ rapport.auteur.name }} {{ rapport.auteur.prenom }}</td>
-                <td>{{ rapport.batiment.denomination }}</td>
-                <td>{{ rapport.etage.denomination }}</td>
-                <td>{{ rapport.localisation.denomination }}</td>
-                <td>{{ rapport.contenu }}</td>
-                <td>
-                    <a href="{{ path('rapport_show', {'id': rapport.id}) }}">Voir / Commenter</a>
-                    {% if app.user.roles[0]== 'ROLE_ADMIN' %}
-                    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}">Editer le rapport</a>
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-            
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun rapport enregistré</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+	<table class="table texte-blanc">
+		<tbody>
+			{% for rapport in rapports %}
+				<tr class="{% if rapport.id is odd %} pair {% else %} impair {% endif %} ">
+					<td>
+						<div class="row">
+							<div class="col-3 text-center">
+								<div class="mt-3">
+									Titre du rapport :
+									<h3>{{ rapport.titre }}</h3>
+								</div>
+								<div class="d-flex justify-content-center">
+									<div class="">
+										<div class="mt-4">
+											Date
+											<br>
+											<div class="cartouche mt-2  p-1">
+												{{ rapport.createdAt ? rapport.createdAt|date('d-m-Y H:i') : '' }}
+											</div>
+										</div>
+										<div class=" mt-4">
+											Auteur
+											<br>
+											<div class="cartouche mt-2 mb-4  p-1 ">
+												{{ rapport.auteur.name }}
+												{{ rapport.auteur.prenom }}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-7 mt-3">
+								<div class="row text-center">
+									<div class="col-4">
+										Batiment
+										<div class="cartouche p-1 mt-2">
+											{{ rapport.batiment.denomination}}
+										</div>
+									</div>
+									<div class=" col-4">
+										Etage
+										<div class="cartouche  p-1 mt-2">
+											{{ rapport.etage.denomination}}
+										</div>
+									</div>
+									<div class=" col-4">
+										Localisation
+										<div class="cartouche  p-1 mt-2">
+											{{ rapport.localisation.denomination}}
+										</div>
+									</div>
+								</div>
+								<div class="border contenu p-2 mt-4 mb-4">
+									{{ rapport.contenu }}
+								</div>
+							</div>
+							<div class="col-2 text-center">
+								<a class="btn btn-form texte-blanc mt-5" href="{{ path('rapport_show', {'id': rapport.id}) }}">
+									Voir / Commenter
+								</a><br>
+								{% if app.user.roles[0]== 'ROLE_ADMIN' %}
+									<a class="btn btn-form mt-5 texte-blanc" href="{{ path('rapport_edit', {'id': rapport.id}) }}">
+										Editer le rapport
+									</a>
+								{% endif %}
+							</div>
+						</div>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucun rapport enregistré</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}

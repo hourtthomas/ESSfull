@@ -1,13 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier le rapport {{ rapport.titre }}{% endblock %}
+{% block title %}Modifier le rapport
+	{{ rapport.titre }}
+{% endblock %}
 
 {% block body %}
-    <h1>Modifier le rapport {{ rapport.titre }}</h1>
+	<div class="new-rapport p-5 w-75 text-center m-auto">
+		<h1>Modifier le rapport
+			{{ rapport.titre }}</h1>
 
-    {{ include('rapport/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-    {{ include('rapport/_delete_form.html.twig') }}
-    <a href="{{ path('rapport_index') }}">Revenir à la liste des rapports</a>
+		{{ include('rapport/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+		<div class="row">
+			<div class="col-4 mt-5">
+				<a class="texte-blanc btn btn-form w-75" href="{{ path('rapport_index') }}">Retourner à l'index des rapports</a>
+			</div>
+			<div class="col-4 mt-5">
+				{% if app.user.roles[0]== 'ROLE_ADMIN' %}
+					<a class="texte-blanc btn btn-form w-75" href="{{ path('rapport_edit', {'id': rapport.id}) }}">Modifier le rapport</a>
+				{% endif %}
+			</div>
+			<div class="col-4 mt-5">
+				{% if app.user.roles[0]== 'ROLE_ADMIN' %}
+					{{ include('rapport/_delete_form.html.twig') }}
+				{% endif %}
+			</div>
+		</div>
+	</div>
 
 
 {% endblock %}

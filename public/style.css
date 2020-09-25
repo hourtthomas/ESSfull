@@ -1,4 +1,97 @@
+a:hover{
+    color:hsl(215, 43%, 21%) !important;
+}
+
+button:hover{
+    color:hsl(215, 43%, 21%) !important;
+
+}
+.link{
+    color:hsl(215, 43%, 21%) !important;
+}
+
+.texte-blanc{
+    color: rgb(255, 255, 255) !important;
+}
+.cartouche{
+    color: hsl(215, 43%, 21%);
+    background-color: white;
+}
+.pair{
+    background-color: hsl(215, 43%, 31%);
+}
+.impair{
+    background-color: hsl(215, 43%, 41%);
+}
+
+.contenu {
+    color: rgb(255, 255, 255);
+    max-height:255px;
+    overflow-y: scroll;
+}
+
+.contenu-full {
+    color: rgb(255, 255, 255);
+    overflow-y: scroll;
+}
+
+.title-form{
+    font-family: 'Spectral', serif;
+}
+
 .fond-bleu{
     background-color: hsl(215, 43%, 21%);
-    color: wheat;
+    color: rgb(255, 255, 255);
+    padding: 3em;
+}
+
+.navbarperso{
+    background-color: hsl(36, 22%, 58%);
+    height: 60px;
+    line-height: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.logo{
+    width:120px;
+    height: 120px;
+    vertical-align: middle;
+}
+
+.btn-accueil{
+    margin: 0 auto ;
+    background-color: hsl(36, 22%, 58%);
+    color: white;
+}
+
+.btn-form{
+    background-color: hsl(36, 22%, 58%);
+    color: white;
+    min-width: 100px;
+}
+
+.card-login{
+    background-color: hsl(36, 22%, 58%);
+    width: 50%;
+}
+
+.logo-login{
+    width:200px;
+    height: 200px;
+    vertical-align: middle;
+}
+
+.inside-border {
+    outline-offset: -5px;
+    outline: 2px solid hsl(215, 43%, 21%);
+}
+
+.title-form{
+    color: hsl(215, 43%, 21%);
+    font-family: spec;
+}
+
+.new-rapport{
+    background-color: hsl(215, 43%, 31%);
 }

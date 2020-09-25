@@ -1,13 +1,20 @@
+{% extends "base.html.twig" %}
 
-
-{% block title %}Hello OtherController!{% endblock %}
+{% block title %}
+	Hello OtherController!
+{% endblock %}
 
 {% block body %}
-<style>
-
-</style>
-    <img src="/var/www/thomas/SeCrud/public/image/logo.png" alt="logo">
-    <a href="{{ path('app_login') }}">Se connecter</a>
-    <a href="{{ path('app_login') }}">Aide</a>
+	<div class="row mt-5">
+		<div class="m-auto container-fluid">
+			<div class="text-center mb-5">
+				<img src="/image/logo.png" alt="logo">
+			</div>
+			<div class="w-25 m-auto">
+				<a class="btn btn-accueil btn-lg btn-block w-50" href="{{ path('app_login') }}">Se connecter</a>
+				<a class="btn btn-accueil btn-lg btn-block w-50" href="#">Aide</a>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

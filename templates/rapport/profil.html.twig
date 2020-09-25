@@ -1,13 +1,16 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<h1>Bienvenue sur votre profil {{user.name}}</h1>
-    <a href="{{ path('password_modify') }}">Modifier le mot de passe</a>
 
-    {% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
-    {% endfor %}
-    
+	<div class="new-rapport p-5 w-75 text-center m-auto">
+		<h1>Bienvenue sur votre profil Mr.
+			{{user.name}}</h1>
+		<button class="texte-blanc btn btn-form w-25 mt-5" href="{{ path('password_modify') }}">Modifier le mot de passe</button>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}

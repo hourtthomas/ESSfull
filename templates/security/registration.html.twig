@@ -1,16 +1,32 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<div class="new-rapport p-5 w-50 m-auto text-center ">
+
 <h1>Formulaire d'enregistrement d'un nouvel utilisateur</h1>
 
 {{ form_start(form) }}
-    {{ form_row(form.name, {'label': 'Nom d\'utilisateur','attr':{'placeholder': 'Entrez le nom de l\'utilisateur à créér'}}) }}
-    {{ form_row(form.prenom, {'label': 'Prenom d\'utilisateur','attr':{'placeholder': 'Entrez le prénom de l\'utilisateur à créér'}}) }}
-    {{ form_row(form.matricule, {'label': 'Nom d\'utilisateur','attr':{'placeholder': 'Entrez le matricule de l\'utilisateur à créér'}}) }}
-    {{ form_row(form.password, {'label': 'Mot de passe','attr':{'placeholder': 'password'}}) }}
-    {{ form_row(form.confirm_password, {'label': 'Confirmez le mot de passe choisi','attr':{'placeholder': 'password'}}) }}
-    {{form_row(form.roles, {'label': 'Role'})}}
-    <button type="submit" class="btn btn-success"> Enregistrer</button>
+
+	<div class="w-50 mx-auto mt-5">
+		{{ form_row(form.name, {'label': 'Nom d\'utilisateur','attr':{'placeholder': 'Entrez le nom de l\'utilisateur à créér'}}) }}
+	</div>
+	<div class="w-50 mx-auto">
+		{{ form_row(form.prenom, {'label': 'Prenom d\'utilisateur','attr':{'placeholder': 'Entrez le prénom de l\'utilisateur à créér'}}) }}
+	</div>
+	<div class="w-50 mx-auto">
+		{{ form_row(form.matricule, {'label': 'Matricule utilisateur','attr':{'placeholder': 'Entrez le matricule de l\'utilisateur à créér'}}) }}
+    </div>
+    <div class="w-50 mx-auto">
+        {{ form_row(form.password, {'label': 'Mot de passe','attr':{'placeholder': 'password'}}) }}
+    </div>
+    <div class="w-50 mx-auto">
+        {{ form_row(form.confirm_password, {'label': 'Confirmez le mot de passe choisi','attr':{'placeholder': 'password'}}) }}
+    </div>
+    <div class="w-50 mx-auto ">
+        {{form_row(form.roles, {'label': 'Role'})}}
+    </div>
+    <button type="submit" class="btn btn-form texte-blanc w-25 mb-5 mt-3"> Enregistrer</button>
 
 {{ form_end(form) }}
+</div>
 {% endblock %}

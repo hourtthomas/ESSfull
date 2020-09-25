@@ -1,4 +1,30 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Enregistrer le rapport') }}</button>
+
+<div class="w-25 text-left mt-5">
+	<div class="pl-2">
+		{{ form_label(form.titre, 'Titre') }}
+	</div>
+	{{ form_widget(form.titre, {'attr': {'placeholder': 'Titre du rapport'}}) }}
+</div>
+
+<div class="row text-left mt-5">
+	<div class="col-4  pl-4">{{ form_label(form.batiment, 'Batiment') }}</div>
+	<div class="col-4  pl-4">{{ form_label(form.etage, 'Etage') }}</div>
+	<div class="col-4  pl-4">{{ form_label(form.localisation, 'Localisation') }}</div>
+</div>
+
+<div class="row ">
+	<div class="col-4">{{ form_widget(form.batiment) }}</div>
+	<div class="col-4">{{ form_widget(form.etage) }}</div>
+	<div class="col-4">{{ form_widget(form.localisation) }}</div>
+</div>
+
+<div class="mt-5">
+	<div class="text-left pl-2">
+		{{ form_label(form.contenu, 'Contenu') }}
+	</div>
+	{{ form_widget(form.contenu, {'attr': {'placeholder': 'Contenu du rapport','rows': '10'}}) }}
+</div>
+
+
 {{ form_end(form) }}

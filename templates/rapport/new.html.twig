@@ -2,10 +2,23 @@
 
 {% block title %}Créer un nouveau rapport{% endblock %}
 
+
 {% block body %}
-    <h1>Créer un nouveau rapport</h1>
+    <div class="new-rapport p-5 w-75 text-center m-auto">
+        <h1>Créer un nouveau rapport</h1>
 
-    {{ include('rapport/_form.html.twig') }}
+        {{ include('rapport/_form.html.twig') }}
 
-    <a href="{{ path('rapport_index') }}">Revenir à la liste des rapports</a>
+
+		<div class="row">
+			<div class="col-6 mt-5">
+				<a class="texte-blanc btn btn-form w-50" href="{{ path('rapport_index') }}">Retourner à l'index des rapports</a>
+			</div>
+			<div class="col-6 mt-5">
+                <button class="btn btn-form texte-blanc w-50">{{ button_label|default('Enregistrer le rapport') }}</button>
+			</div>
+		</div>
+    </div>    
 {% endblock %}
+
+
